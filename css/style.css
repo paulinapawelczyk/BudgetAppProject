@@ -30,7 +30,7 @@ header {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    min-height: 40vh;
+    /* min-height: 40vh; */
 }
 
 .budget_summary {
@@ -53,8 +53,10 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-basis: 45%;
+    flex-basis: 40%;
     color: var(--navyColor);
+    flex-grow: 1;
+    padding: 0 1rem 0 1rem;
 
 }
 
@@ -204,14 +206,22 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-basis: 45%;
+    flex-basis: 40%;
     color: var(--navyColor);
-
+    flex-grow: 1;
+    padding: 0 1rem 0 1rem;
 }
 
 .expenses h2 {
     flex-basis: 100%;
     text-align: center;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--expenses-color);
+
 }
 
 .expense_add {
@@ -222,40 +232,142 @@ header {
     text-align: center;
 }
 
-
 .expense_form {
     flex-basis: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
+.expense_add_desc {
+    flex-basis: 100%;
+    padding: 1rem 1rem;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border-bottom: 3px solid var(--yellow);
+    transition: border-color 0.2s;
+    color: var(--navyColor);
+}
+
+.expense_add_value {
+    flex-basis: 100%;
+    padding: 1rem 1rem;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border-bottom: 3px solid var(--yellow);
+    transition: border-color 0.5s;
+    color: var(--navyColor);
+}
+
+.expense_form input:focus {
+    border-bottom: 3px solid var(--expenses-color);
+}
+
+.expense_add_btn {
+    flex-basis: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0rem 1rem;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 3rem;
+    color: var(--expenses-color);
 }
 
 .expenses_list {
     flex-basis: 100%;
     text-align: left;
-    margin: 30px 10px;
+    margin: 1rem 0.5rem;
     background-color: var(--list-background-color);
 }
 
-.expense_list ul {
+.expenses_list ul {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .expense_item {
     flex-basis: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    border-bottom: 3px solid var(--expenses-color);
+    color: var(--navyColor);
+}
+
+.expense_item_desc {
+    flex-basis: 50%;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-shrink: 1;
+}
+
+.expense_item_value {
+    flex-basis: 30%;
+    text-align: left;
+}
+
+.expense_item_buttons {
+    flex-basis: 10%;
+    background-color: transparent;
+    padding: 0.2rem;
+    font-size: 1.5rem;
+}
+
+.expense_edit,
+.expense_delete {
+    background-color: transparent;
+    border: none;
+    color: var(--navyColor);
 }
 
 .expenses .expenses_summary {
     flex-basis: 100%;
+    padding: 0.5rem 0.5rem;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--expenses-color);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--expenses-color);
+    color: #fff;
+    border-radius: 0.3rem;
 }
 
-@media (min-width: 1200px) {
+/*RWD*/
+
+@media (min-width: 1100px) {
+
+    .budget {
+        align-items: flex-start;
+    }
+
+
     .income_add_desc {
-        flex-basis: 35%;
+        flex-basis: 30%;
     }
 
     .income_add_value {
-        flex-basis: 35%;
+        flex-basis: 30%;
     }
 
     .income_add_btn {
@@ -274,6 +386,34 @@ header {
     }
 
     .incomes .incomes_summary p {
+        padding-right: 0.4rem;
+    }
+
+    /*expenses*/
+    .expense_add_desc {
+        flex-basis: 30%;
+    }
+
+    .expense_add_value {
+        flex-basis: 30%;
+
+    }
+
+    .expense_add_btn {
+        flex-basis: 10%;
+    }
+
+    .expense_item_buttons {
+        flex-basis: 20%;
+        background-color: transparent;
+        padding: 0.2rem;
+    }
+
+    .expenses .expenses_summary {
+        flex-direction: row;
+    }
+
+    .expenses .expenses_summary p {
         padding-right: 0.4rem;
     }
 }
