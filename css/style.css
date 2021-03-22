@@ -4,6 +4,7 @@ body {
 
 }
 
+/*Header*/
 header {
     display: flex;
     justify-content: center;
@@ -16,6 +17,7 @@ header {
     border-radius: 50%;
 }
 
+/*Main budget*/
 .budget {
     display: flex;
     justify-content: space-evenly;
@@ -23,5 +25,101 @@ header {
 }
 
 .budget_summary {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*Incomes*/
+.incomes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 45%;
+}
+
+.incomes h2 {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.income_add {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.income_form {
+    flex-basis: 100%;
+
+}
+
+.incomes_list {
+    flex-basis: 100%;
+    text-align: left;
+    margin: 30px 10px;
+}
+
+.incomes_list ul {
+    display: flex;
+}
+
+.income_item {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.incomes .incomes_summary {
+    flex-basis: 100%;
+}
+
+/*Expenses*/
+.expenses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 45%;
+}
+
+.expenses h2 {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.expense_add {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.expense_form {
+    flex-basis: 100%;
+
+}
+
+.expenses_list {
+    flex-basis: 100%;
+    text-align: left;
+    margin: 30px 10px;
+}
+
+.expense_list ul {
+    display: flex;
+}
+
+.expense_item {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.expenses .expenses_summary {
     flex-basis: 100%;
 }

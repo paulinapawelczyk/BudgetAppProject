@@ -19,7 +19,9 @@
     </header>
     <main class="budget">
         <section class="budget_summary">
-            <p class="budget_summary_alert">You can still spend $$$ more</p>
+            <div class="budget_summary_alert">
+                <p>You can still spend $$$ more</p>
+            </div>
         </section>
         <section class="incomes">
             <h2>Incomes</h2>
@@ -30,6 +32,19 @@
                         placeholder="Add income value">
                     <button class="income_add_btn">Add income</button>
                 </form>
+                <div class="incomes_list">
+                    <ul>
+                        <li class="income_item">
+                            <p class="income_item_desc">Lorem ipsum</p>
+                            <p class="income_item_value">100 zł</p>
+                            <div class="income_item_buttons">
+                                <button class="income_edit">Edit</button>
+                                <button class="income_delete">Delete</button>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
             <div class="incomes_summary">
                 <p>Incomes summary:</p>
@@ -44,6 +59,18 @@
                         placeholder="Add expense value">
                     <button class="expense_add_btn">Add expense</button>
                 </form>
+                <div class="expenses_list">
+                    <ul>
+                        <li class="expense_item">
+                            <p class="expense_item_desc">Lorem ipsum</p>
+                            <p class="expense_item_value">100 zł</p>
+                            <div class="expense_item_buttons">
+                                <button class="expense_edit">Edit</button>
+                                <button class="expense_delete">Delete</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="expenses_summary">
                 <p>Expenses summary:</p>
