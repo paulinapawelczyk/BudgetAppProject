@@ -1,4 +1,27 @@
 body {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
+
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    margin: 15px auto;
+    border-radius: 50%;
+}
+
+.budget {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.budget_summary {
+    flex-basis: 100%;
 }

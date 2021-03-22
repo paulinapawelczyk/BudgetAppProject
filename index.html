@@ -13,12 +13,43 @@
 
 <body>
     <header class="header">
-        <h1 class="appName">Budget Application</h1>
         <div class="logo">
             <img src="img/logo.jpg" alt="BudgetApp logo">
         </div>
     </header>
-
+    <main class="budget">
+        <section class="budget_summary">
+            <p class="budget_summary_alert">You can still spend $$$ more</p>
+        </section>
+        <section class="incomes">
+            <h2>Incomes</h2>
+            <div class=income_add>
+                <form action="" class="income_form">
+                    <input type="text" class="income_add_desc" name="income_add_desc" placeholder="Add income">
+                    <input type="number" class="income_add_value" name="income_add_value"
+                        placeholder="Add income value">
+                    <button class="income_add_btn">Add income</button>
+                </form>
+            </div>
+            <div class="incomes_summary">
+                <p>Incomes summary:</p>
+            </div>
+        </section>
+        <section class="expenses">
+            <h2>Expenses</h2>
+            <div class=expense_add>
+                <form action="" class="expense_form">
+                    <input type="text" class="expense_add_desc" name="expense_add_desc" placeholder="Add expense">
+                    <input type="number" class="expense_add_value" name="expense_add_value"
+                        placeholder="Add expense value">
+                    <button class="expense_add_btn">Add expense</button>
+                </form>
+            </div>
+            <div class="expenses_summary">
+                <p>Expenses summary:</p>
+            </div>
+        </section>
+    </main>
     <script src="js/index.js"></script>
 </body>
 
