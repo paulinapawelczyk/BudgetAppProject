@@ -3,6 +3,7 @@
     --expenses-color: rgb(231, 67, 67);
     --list-background-color: rgb(247, 247, 239);
     --yellow: rgb(240, 199, 21);
+    --navyColor: rgb(54, 72, 94);
 }
 
 body {
@@ -36,15 +37,15 @@ header {
     flex-basis: 100%;
     display: flex;
     justify-content: space-evenly;
+    padding: 1rem 0;
+    margin: 0 1rem;
     border-bottom: 3px solid var(--yellow);
+    border-radius: 2px;
     text-align: center;
     align-self: center;
     font-size: 20px;
     font-weight: bold;
-    padding: 1rem 0;
-    margin: 0 1rem;
-    /* background-color: #fcba04; */
-    border-radius: 2px;
+    color: var(--navyColor);
 }
 
 /*Incomes*/
@@ -53,11 +54,20 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     flex-basis: 45%;
+    color: var(--navyColor);
+
 }
 
 .incomes h2 {
     flex-basis: 100%;
     text-align: center;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--incomes-color);
+
 }
 
 .income_add {
@@ -67,7 +77,6 @@ header {
     justify-content: center;
     text-align: center;
 }
-
 
 .income_form {
     flex-basis: 100%;
@@ -82,6 +91,7 @@ header {
     font-family: inherit;
     border-bottom: 3px solid var(--yellow);
     transition: border-color 0.2s;
+    color: var(--navyColor);
 }
 
 .income_add_value {
@@ -93,11 +103,17 @@ header {
     font-family: inherit;
     border-bottom: 3px solid var(--yellow);
     transition: border-color 0.5s;
-
+    color: var(--navyColor);
 }
 
 .income_form input:focus {
     border-bottom: 3px solid var(--incomes-color);
+}
+
+.income_add_btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .incomes_list {
@@ -127,6 +143,8 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     flex-basis: 45%;
+    color: var(--navyColor);
+
 }
 
 .expenses h2 {
