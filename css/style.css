@@ -355,23 +355,22 @@ header {
 
 /*RWD*/
 
-@media (min-width: 1100px) {
+@media (min-width: 760px) {
 
     .budget {
         align-items: flex-start;
     }
 
-
     .income_add_desc {
-        flex-basis: 30%;
+        flex-basis: 100%;
     }
 
     .income_add_value {
-        flex-basis: 30%;
+        flex-basis: 100%;
     }
 
     .income_add_btn {
-        flex-basis: 10%;
+        flex-basis: 30%;
     }
 
     .income_item_buttons {
@@ -391,16 +390,16 @@ header {
 
     /*expenses*/
     .expense_add_desc {
-        flex-basis: 30%;
+        flex-basis: 100%;
     }
 
     .expense_add_value {
-        flex-basis: 30%;
+        flex-basis: 100%;
 
     }
 
     .expense_add_btn {
-        flex-basis: 10%;
+        flex-basis: 30%;
     }
 
     .expense_item_buttons {
@@ -415,5 +414,44 @@ header {
 
     .expenses .expenses_summary p {
         padding-right: 0.4rem;
+    }
+}
+
+@media (min-width: 1100px) {
+    .budget_summary {
+        font-size: 26px;
+    }
+
+    .income_add_desc {
+        flex-basis: 30%;
+    }
+
+    .income_add_value {
+        flex-basis: 30%;
+    }
+
+    .income_add_btn {
+        flex-basis: 10%;
+    }
+
+    .income_item_buttons {
+        flex-basis: 20%;
+    }
+
+    /*expenses*/
+    .expense_add_desc {
+        flex-basis: 30%;
+    }
+
+    .expense_add_value {
+        flex-basis: 30%;
+    }
+
+    .expense_add_btn {
+        flex-basis: 10%;
+    }
+
+    .expense_item_buttons {
+        flex-basis: 20%;
     }
 }
