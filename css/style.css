@@ -129,6 +129,7 @@ header {
     border-radius: 0.3rem;
     font-size: 3rem;
     color: var(--incomes-color);
+    transition: 1s
 }
 
 .incomes_list {
@@ -281,6 +282,7 @@ header {
     border-radius: 0.3rem;
     font-size: 3rem;
     color: var(--expenses-color);
+    transition: 1s;
 }
 
 .expenses_list {
@@ -427,6 +429,11 @@ header {
 }
 
 @media (min-width: 1100px) {
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+
     .budget_summary {
         font-size: 26px;
     }
@@ -462,5 +469,10 @@ header {
 
     .expense_item_buttons {
         flex-basis: 20%;
+    }
+
+    .income_add_btn:hover,
+    .expense_add_btn:hover {
+        color: var(--navyColor)
     }
 }

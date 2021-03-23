@@ -99,11 +99,37 @@ class Budget {
         }
     }
 
+    createIncomeItem() {
+        return `<li class="income_item">
+                            <p class="income_item_desc" data-item-desc>Lorem ipsum aaassssssaaaaaaa</p>
+                            <p class="income_item_value" data-item-value>101110 zł</p>
+                            <div class="income_item_buttons">
+                                <button class="income_edit" data-edit-button><i class="fas fa-edit"></i></button>
+                                <button class="income_delete" data-delete-button><i
+                                        class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </li>`
+    }
+
+    createExpenseItem() {
+        return `<li class="expense_item">
+                            <p class="expense_item_desc" data-item-desc>Lorem ipsum</p>
+                            <p class="expense_item_value" data-item-value>100 zł</p>
+                            <div class="expense_item_buttons">
+                                <button class="expense_edit" data-edit-button><i class="fas fa-edit"></i></button>
+                                <button class="expense_delete" data-delete-button><i
+                                        class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </li>`
+    }
 
     addIncomeItem() {
         const newIncome = this.getIncomeInput();
         if (!newIncome) {
             this.showAlertIn();
+        } else {
+            this.incomesList.insertAdjacentHTML('beforeend', this.createIncomeItem());
+            this.hideAlertIn();
         }
     }
 
@@ -111,6 +137,9 @@ class Budget {
         const newExpense = this.getExpenseInput();
         if (!newExpense) {
             this.showAlertEx();
+        } else {
+            this.expensesList.insertAdjacentHTML('beforeend', this.createExpenseItem());
+            this.hideAlertEx();
         }
     }
 
@@ -122,8 +151,12 @@ class Budget {
         this.alertExpenses.classList.remove('hide');
     }
 
-    hideAlert() {
-        this.alert.classList.add('hide');
+    hideAlertIn() {
+        this.alertIncomes.classList.add('hide');
+    }
+
+    hideAlertEx() {
+        this.alertExpenses.classList.add('hide');
     }
 
 }
