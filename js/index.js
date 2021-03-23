@@ -14,7 +14,8 @@ class Budget {
     itemValue = null;
     incomesSumm = null;
     expensesSumm = null;
-    alert = null;
+    alertIncomes = null;
+    alertExpenses = null;
 
     //make anchors for elements//
     AppElements = {
@@ -33,7 +34,8 @@ class Budget {
         itemValue: '[data-item-value]',
         incomesSumm: '[data-incomes-summ]',
         expensesSumm: '[data-expenses-summ]',
-        alert: '[data-alert]'
+        alertIncomes: '[data-alert-incomes]',
+        alertExpenses: '[data-alert-expenses]'
     }
 
 
@@ -54,7 +56,8 @@ class Budget {
         this.incomesSumm = document.querySelector(this.AppElements.incomesSumm);
         this.expensesSumm = document.querySelector(this.AppElements.expensesSumm);
 
-        this.alert = document.querySelector(this.AppElements.alert);
+        this.alertIncomes = document.querySelector(this.AppElements.alertIncomes);
+        this.alertExpenses = document.querySelector(this.AppElements.alertExpenses);
 
         this.addEventListenersActions();
     }
@@ -100,19 +103,23 @@ class Budget {
     addIncomeItem() {
         const newIncome = this.getIncomeInput();
         if (!newIncome) {
-            this.showAlert();
+            this.showAlertIn();
         }
     }
 
     addExpenseItem() {
         const newExpense = this.getExpenseInput();
         if (!newExpense) {
-            this.showAlert();
+            this.showAlertEx();
         }
     }
 
-    showAlert() {
-        this.alert.classList.remove('hide');
+    showAlertIn() {
+        this.alertIncomes.classList.remove('hide');
+    }
+
+    showAlertEx() {
+        this.alertExpenses.classList.remove('hide');
     }
 
     hideAlert() {
