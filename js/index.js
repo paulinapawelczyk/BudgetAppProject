@@ -14,11 +14,12 @@ class Budget {
     itemValue = null;
     incomesSumm = null;
     expensesSumm = null;
+    alert = null;
 
     //make anchors for elements//
     AppElements = {
         incomeAddDesc: '[data-income-desc]',
-        icnomeAddVal: '[data-income-value]',
+        incomeAddVal: '[data-income-value]',
         incomeAddBtn: '[data-income-button]',
         expenseAddDesc: '[data-expense-desc]',
         expenseAddVal: '[data-expense-value]',
@@ -31,19 +32,20 @@ class Budget {
         itemDesc: '[data-item-desc]',
         itemValue: '[data-item-value]',
         incomesSumm: '[data-incomes-summ]',
-        expensesSumm: '[data-expenses-summ]'
+        expensesSumm: '[data-expenses-summ]',
+        alert: '[data-alert]'
     }
 
 
     init() {
 
-        this.incomeAddDesc = document.getElementById(this.AppElements.incomeAddDesc);
-        this.incomeAddVal = document.getElementById(this.AppElements.incomeAddVal);
-        this.incomeAddBtn = document.getElementById(this.AppElements.incomeAddBtn);
+        this.incomeAddDesc = document.querySelector(this.AppElements.incomeAddDesc);
+        this.incomeAddVal = document.querySelector(this.AppElements.incomeAddVal);
+        this.incomeAddBtn = document.querySelector(this.AppElements.incomeAddBtn);
 
-        this.expenseAddDesc = document.getElementById(this.AppElements.expenseAddDesc);
-        this.expenseAddVal = document.getElementById(this.AppElements.expenseAddVal);
-        this.expenseAddBtn = document.getElementById(this.AppElements.expenseAddBtn);
+        this.expenseAddDesc = document.querySelector(this.AppElements.expenseAddDesc);
+        this.expenseAddVal = document.querySelector(this.AppElements.expenseAddVal);
+        this.expenseAddBtn = document.querySelector(this.AppElements.expenseAddBtn);
 
         this.incomesList = document.querySelector(this.AppElements.incomesList);
         this.expensesList = document.querySelector(this.AppElements.expensesList);
@@ -51,6 +53,10 @@ class Budget {
         this.budgetSumm = document.querySelector(this.AppElements.budgetSumm);
         this.incomesSumm = document.querySelector(this.AppElements.incomesSumm);
         this.expensesSumm = document.querySelector(this.AppElements.expensesSumm);
+
+        this.alert = document.querySelector(this.AppElements.alert);
+
+        this.addEventListenersActions();
     }
 
     addEventListenersActions() {
@@ -62,14 +68,55 @@ class Budget {
         })
     }
 
-    addIncomeItem() {
+    getIncomeInput() {
         const inValue = this.incomeAddVal.value;
         const inDesc = this.incomeAddDesc.value;
+
+        if (inValue > 0 && inDesc) {
+            return {
+                inValue: inValue,
+                inDesc: inDesc
+            }
+        } else {
+            return null;
+        }
+    }
+
+    getExpenseInput() {
+        const exValue = this.expenseAddVal.value;
+        const exDesc = this.expenseAddDesc.value;
+
+        if (exValue > 0 && exDesc) {
+            return {
+                exValue: exValue,
+                exDesc: exDesc
+            }
+        } else {
+            return null;
+        }
+    }
+
+
+    addIncomeItem() {
+        const newIncome = this.getIncomeInput();
+        if (!newIncome) {
+            this.showAlert();
+        }
     }
 
     addExpenseItem() {
-        const exValue = this.expenseAddVal.value;
-        const exDesc = this.expenseAddDesc.value;
+        const newExpense = this.getExpenseInput();
+        if (!newExpense) {
+            this.showAlert();
+        }
+    }
+
+    showAlert() {
+        this.alert.classList.remove('hide');
+    }
+
+    hideAlert() {
+        this.alert.classList.add('hide');
     }
 
 }

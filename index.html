@@ -27,15 +27,18 @@
         </section>
         <section class="incomes">
             <h2>Incomes</h2>
+            <p class="alert hide" data-alert>
+                Empty description or wrong value
+            </p>
             <div class=income_add>
-                <form action="" class="income_form">
+                <div action="" class="income_form">
                     <input type="text" data-income-desc class="income_add_desc" name="income_add_desc"
                         placeholder="Add income">
                     <input type="number" data-income-value class="income_add_value" name="income_add_value"
                         placeholder="Add income value">
                     <button class="income_add_btn" data-income-button><i class="fas fa-plus-circle"></i>
                     </button>
-                </form>
+                </div>
                 <div class="incomes_list">
                     <ul data-incomes-list>
                         <li class="income_item">
@@ -57,14 +60,17 @@
         </section>
         <section class="expenses">
             <h2>Expenses</h2>
+            <p class="alert hide" data-alert>
+                Empty description or wrong value
+            </p>
             <div class=expense_add>
-                <form action="" class="expense_form">
+                <div action="" class="expense_form">
                     <input type="text" class="expense_add_desc" name="expense_add_desc" placeholder="Add expense"
                         data-expense-desc>
                     <input type="number" class="expense_add_value" name="expense_add_value"
                         placeholder="Add expense value" data-expense-value>
                     <button class="expense_add_btn" data-expense-button><i class="fas fa-plus-circle"></i></button>
-                </form>
+                </div>
                 <div class="expenses_list">
                     <ul data-expenses-list>
                         <li class="expense_item">
