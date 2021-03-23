@@ -80,8 +80,13 @@ class Budget {
         this.expenseAddBtn.addEventListener('click', () => {
             this.addExpenseItem();
         })
-    }
 
+
+    }
+    countSumm() {
+
+        console.log(this.incomesSumm - this.expensesSumm);
+    }
     getIncomeInput() {
         const inValue = this.incomeAddVal.value;
         const inDesc = this.incomeAddDesc.value;
@@ -181,7 +186,7 @@ class Budget {
             this.numberOfIncomes++; //make id's for exit and delete function
 
             this.increaseIncome();
-
+            this.countSumm();
 
             this.incomeAddDesc.value = '';
             this.incomeAddVal.value = '';
@@ -202,6 +207,7 @@ class Budget {
 
 
             this.increaseExpenses();
+            this.countSumm();
 
             this.expenseAddDesc.value = '';
             this.expenseAddVal.value = '';
