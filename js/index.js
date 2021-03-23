@@ -161,6 +161,15 @@ class Budget {
         this.incomesSummInfo.innerHTML = `${(this.incomesSumm).toFixed(2)} zł`;
     }
 
+    increaseExpenses() {
+        this.expensesSumm = 0;
+        this.expensesItems.forEach(({ exValue }) => {
+
+            this.expensesSumm += parseFloat(exValue, 10);
+        })
+        this.expensesSummInfo.innerHTML = `${(this.expensesSumm).toFixed(2)} zł`;
+    }
+
     addIncomeItem() {
         const newIncome = this.getIncomeInput();
         if (!newIncome) {
