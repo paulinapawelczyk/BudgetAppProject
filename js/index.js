@@ -16,6 +16,8 @@ class Budget {
     expensesSumm = null;
     alertIncomes = null;
     alertExpenses = null;
+    numberOfIncomes = 0;
+    numberOfExpenses = 0;
 
     //make anchors for elements//
     AppElements = {
@@ -78,7 +80,8 @@ class Budget {
         if (inValue > 0 && inDesc) {
             return {
                 inValue: inValue,
-                inDesc: inDesc
+                inDesc: inDesc,
+                id: this.numberOfIncomes
             }
         } else {
             return null;
@@ -92,17 +95,18 @@ class Budget {
         if (exValue > 0 && exDesc) {
             return {
                 exValue: exValue,
-                exDesc: exDesc
+                exDesc: exDesc,
+                id: this.numberOfExpenses
             }
         } else {
             return null;
         }
     }
 
-    createIncomeItem() {
-        return `<li class="income_item">
-                            <p class="income_item_desc" data-item-desc>Lorem ipsum aaassssssaaaaaaa</p>
-                            <p class="income_item_value" data-item-value>101110 zł</p>
+    createIncomeItem(inDesc, inValue, id) {
+        return `<li class="income_item" id="${id}">
+                            <p class="income_item_desc" data-item-desc>${inDesc}</p>
+                            <p class="income_item_value" data-item-value>${inValue} zł</p>
                             <div class="income_item_buttons">
                                 <button class="income_edit" data-edit-button><i class="fas fa-edit"></i></button>
                                 <button class="income_delete" data-delete-button><i
@@ -111,36 +115,16 @@ class Budget {
                         </li>`
     }
 
-    createExpenseItem() {
-        return `<li class="expense_item">
-                            <p class="expense_item_desc" data-item-desc>Lorem ipsum</p>
-                            <p class="expense_item_value" data-item-value>100 zł</p>
+    createExpenseItem(exDesc, exValue, id) {
+        return `<li class="expense_item" id="${id}">
+                            <p class="expense_item_desc" data-item-desc>${exDesc}</p>
+                            <p class="expense_item_value" data-item-value>${exValue} zł</p>
                             <div class="expense_item_buttons">
                                 <button class="expense_edit" data-edit-button><i class="fas fa-edit"></i></button>
                                 <button class="expense_delete" data-delete-button><i
                                         class="fas fa-trash-alt"></i></button>
                             </div>
                         </li>`
-    }
-
-    addIncomeItem() {
-        const newIncome = this.getIncomeInput();
-        if (!newIncome) {
-            this.showAlertIn();
-        } else {
-            this.incomesList.insertAdjacentHTML('beforeend', this.createIncomeItem());
-            this.hideAlertIn();
-        }
-    }
-
-    addExpenseItem() {
-        const newExpense = this.getExpenseInput();
-        if (!newExpense) {
-            this.showAlertEx();
-        } else {
-            this.expensesList.insertAdjacentHTML('beforeend', this.createExpenseItem());
-            this.hideAlertEx();
-        }
     }
 
     showAlertIn() {
@@ -158,6 +142,34 @@ class Budget {
     hideAlertEx() {
         this.alertExpenses.classList.add('hide');
     }
+
+    addIncomeItem() {
+        const newIncome = this.getIncomeInput();
+        if (!newIncome) {
+            this.showAlertIn();
+        } else {
+            this.incomesList.insertAdjacentHTML('beforeend', this.createIncomeItem(newIncome.inDesc, newIncome.inValue, newIncome.id));
+            this.hideAlertIn();
+            this.numberOfIncomes++; //make id's for exit and delete function
+            this.incomeAddDesc.value = '';
+            this.incomeAddVal.value = '';
+        }
+    }
+
+    addExpenseItem() {
+        const newExpense = this.getExpenseInput();
+        if (!newExpense) {
+            this.showAlertEx();
+        } else {
+            this.expensesList.insertAdjacentHTML('beforeend', this.createExpenseItem(newExpense.exDesc, newExpense.exValue, newExpense.id));
+            this.hideAlertEx();
+            this.numberOfExpenses++;
+            this.expenseAddDesc.value = '';
+            this.expenseAddVal.value = '';
+        }
+    }
+
+
 
 }
 
