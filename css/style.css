@@ -364,6 +364,14 @@ header {
     display: none;
 }
 
+.sumNegative {
+    color: var(--expenses-color);
+}
+
+.sumPositive {
+    color: var(--incomes-color);
+}
+
 /*RWD*/
 
 @media (min-width: 760px) {

@@ -48,8 +48,6 @@ class Budget {
 
     }
 
-
-
     init() {
 
         this.incomeAddDesc = document.querySelector(this.AppElements.incomeAddDesc);
@@ -80,13 +78,26 @@ class Budget {
         this.expenseAddBtn.addEventListener('click', () => {
             this.addExpenseItem();
         })
-
-
     }
+
     countSumm() {
-
-        console.log(this.incomesSumm - this.expensesSumm);
+        const sumOfBudget = this.incomesSumm - this.expensesSumm;
+        if (sumOfBudget > 0) {
+            this.budgetSummInfo.innerHTML = `<p >You can still spend ${sumOfBudget} PLN more<p>`;
+            this.budgetSummInfo.className = '';
+            this.budgetSummInfo.classList.add('sumPositive');
+        } else if (sumOfBudget == 0) {
+            this.budgetSummInfo.innerHTML = `<p>The balance is zero!<p>`;
+            this.budgetSummInfo.className = '';
+        } else if (sumOfBudget < 0) {
+            this.budgetSummInfo.innerHTML = `<p>The balance is negative. You are ${Math.abs(sumOfBudget)} PLN under the budget!<p>`;
+            this.budgetSummInfo.className = '';
+            this.budgetSummInfo.classList.add('sumNegative');
+        }
     }
+
+
+
     getIncomeInput() {
         const inValue = this.incomeAddVal.value;
         const inDesc = this.incomeAddDesc.value;
@@ -120,7 +131,7 @@ class Budget {
     createIncomeItem(inDesc, inValue, id) {
         return `<li class="income_item" id="${id}">
                             <p class="income_item_desc" data-item-desc>${inDesc}</p>
-                            <p class="income_item_value" data-item-value>${Number(inValue).toFixed(2)} zł</p>
+                            <p class="income_item_value" data-item-value>${Number(inValue).toFixed(2)} PLN</p>
                             <div class="income_item_buttons">
                                 <button class="income_edit" data-edit-button><i class="fas fa-edit"></i></button>
                                 <button class="income_delete" data-delete-button><i
@@ -132,7 +143,7 @@ class Budget {
     createExpenseItem(exDesc, exValue, id) {
         return `<li class="expense_item" id="${id}">
                             <p class="expense_item_desc" data-item-desc>${exDesc}</p>
-                            <p class="expense_item_value" data-item-value>${Number(exValue).toFixed(2)} zł</p>
+                            <p class="expense_item_value" data-item-value>${Number(exValue).toFixed(2)} PLN</p>
                             <div class="expense_item_buttons">
                                 <button class="expense_edit" data-edit-button><i class="fas fa-edit"></i></button>
                                 <button class="expense_delete" data-delete-button><i
