@@ -139,14 +139,14 @@ class Budget {
     countSumm() {
         const sumOfBudget = this.incomesSumm - this.expensesSumm;
         if (sumOfBudget > 0) {
-            this.budgetSummInfo.innerHTML = `<p >You can still spend ${sumOfBudget} PLN more<p>`;
+            this.budgetSummInfo.innerHTML = `<p >You can still spend ${sumOfBudget.toFixed(2)} PLN more<p>`;
             this.budgetSummInfo.className = '';
             this.budgetSummInfo.classList.add('sumPositive');
         } else if (sumOfBudget == 0) {
             this.budgetSummInfo.innerHTML = `<p>The balance is zero!<p>`;
             this.budgetSummInfo.className = '';
         } else if (sumOfBudget < 0) {
-            this.budgetSummInfo.innerHTML = `<p>The balance is negative. You are ${Math.abs(sumOfBudget)} PLN under the budget!<p>`;
+            this.budgetSummInfo.innerHTML = `<p>The balance is negative. You are ${Math.abs(sumOfBudget).toFixed(2)} PLN under the budget!<p>`;
             this.budgetSummInfo.className = '';
             this.budgetSummInfo.classList.add('sumNegative');
         }
