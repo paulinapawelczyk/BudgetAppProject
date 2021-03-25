@@ -78,7 +78,46 @@ class Budget {
         this.expenseAddBtn.addEventListener('click', () => {
             this.addExpenseItem();
         })
+
+        this.incomeAddDesc.addEventListener('blur', () => this.hideAlertIn());
+        this.incomeAddVal.addEventListener('blur', () => this.hideAlertIn());
+        this.incomeAddBtn.addEventListener('blur', () => this.hideAlertIn());
+        this.expenseAddDesc.addEventListener('blur', () => this.hideAlertEx());
+        this.expenseAddVal.addEventListener('blur', () => this.hideAlertEx());
+        this.expenseAddBtn.addEventListener('blur', () => this.hideAlertEx());
+
+
+        this.incomesList.addEventListener('click', (e) => {
+            this.clickTarget(e.target);
+        })
+
+        this.expensesList.addEventListener('click', (e) => {
+            this.clickTarget(e.target);
+        })
+
     }
+
+    clickTarget(target) {
+        // console.log(target);
+        if (target.dataset && target.dataset.editButton !== undefined) {
+            // console.log(this.editListItem(target));
+            // this.editListItem(target);
+        } else if (target.dataset && target.dataset.deleteButton !== undefined) {
+            this.deleteListItem(target);
+        } else {
+            console.log("bbbbbbbb");
+        }
+    }
+
+    deleteListItem(target) {
+        const listItem = target.parentElement.parentElement.parentElement;
+        const listItemId = listItem.id;
+    }
+
+    // editListItem() {
+    //     const listItem = target.parentElement.parentElement.parentElement;
+    //     const listItemId = listItem.id;
+    // }
 
     countSumm() {
         const sumOfBudget = this.incomesSumm - this.expensesSumm;
@@ -133,9 +172,9 @@ class Budget {
                             <p class="income_item_desc" data-item-desc>${inDesc}</p>
                             <p class="income_item_value" data-item-value>${Number(inValue).toFixed(2)} PLN</p>
                             <div class="income_item_buttons">
-                                <button class="income_edit" data-edit-button><i class="fas fa-edit"></i></button>
-                                <button class="income_delete" data-delete-button><i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button class="income_edit"><i class="fas fa-edit" data-edit-button></i></button>
+                                <button class="income_delete"><i
+                                        class="fas fa-trash-alt" data-delete-button></i></button>
                             </div>
                         </li>`
     }
@@ -145,9 +184,9 @@ class Budget {
                             <p class="expense_item_desc" data-item-desc>${exDesc}</p>
                             <p class="expense_item_value" data-item-value>${Number(exValue).toFixed(2)} PLN</p>
                             <div class="expense_item_buttons">
-                                <button class="expense_edit" data-edit-button><i class="fas fa-edit"></i></button>
-                                <button class="expense_delete" data-delete-button><i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button class="expense_edit"><i class="fas fa-edit" data-edit-button></i></button>
+                                <button class="expense_delete"><i
+                                        class="fas fa-trash-alt" data-delete-button></i></button>
                             </div>
                         </li>`
     }
@@ -193,7 +232,6 @@ class Budget {
         } else {
             this.incomesList.insertAdjacentHTML('beforeend', this.createIncomeItem(newIncome.inDesc, newIncome.inValue, newIncome.id));
             this.incomesItems.push(newIncome);
-            this.hideAlertIn();
             this.numberOfIncomes++; //make id's for exit and delete function
 
             this.increaseIncome();
@@ -201,8 +239,6 @@ class Budget {
 
             this.incomeAddDesc.value = '';
             this.incomeAddVal.value = '';
-
-
         }
     }
 
@@ -213,9 +249,7 @@ class Budget {
         } else {
             this.expensesList.insertAdjacentHTML('beforeend', this.createExpenseItem(newExpense.exDesc, newExpense.exValue, newExpense.id));
             this.expensesItems.push(newExpense);
-            this.hideAlertEx();
             this.numberOfExpenses++;
-
 
             this.increaseExpenses();
             this.countSumm();
@@ -224,9 +258,6 @@ class Budget {
             this.expenseAddVal.value = '';
         }
     }
-
-
-
 }
 
 
