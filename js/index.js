@@ -98,30 +98,36 @@ class Budget {
     }
 
     clickTarget(target) {
-        // console.log(target);
         if (target.dataset && target.dataset.editButton !== undefined) {
             // console.log(this.editListItem(target));
             // this.editListItem(target);
         } else if (target.dataset && target.dataset.deleteButton !== undefined) {
             this.deleteListItem(target);
-        } else {
-            console.log("bbbbbbbb");
         }
     }
 
 
     deleteListItem(target) {
+        const listClass = target.parentElement.parentElement.parentElement.parentElement.parentElement.className;
         const listItem = target.parentElement.parentElement.parentElement;
         const listItemId = listItem.id;
-        console.log(listItemId);
-        const newTable = [...this.incomesItems];
-        this.incomesItems = newTable.filter((elem) => elem.id != listItemId);
-        console.log(listItem);
-        listItem.remove();
+        const newTable = [];
 
+        if (listClass == "incomes_list") {
+            const newTable = [...this.incomesItems];
+            this.incomesItems = newTable.filter((elem) => elem.id != listItemId);
+            listItem.remove();
 
-        console.log(this.incomesItems);
-        this.increaseIncome();
+            this.increaseIncome();
+
+        } else if (listClass == "expenses_list") {
+            const newTable = [...this.expensesItems];
+            this.expensesItems = newTable.filter((elem) => elem.id != listItemId);
+            listItem.remove();
+            this.increaseExpenses();
+
+        }
+
         this.countSumm();
     }
 
