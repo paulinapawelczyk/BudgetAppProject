@@ -109,9 +109,20 @@ class Budget {
         }
     }
 
+
     deleteListItem(target) {
         const listItem = target.parentElement.parentElement.parentElement;
         const listItemId = listItem.id;
+        console.log(listItemId);
+        const newTable = [...this.incomesItems];
+        this.incomesItems = newTable.filter((elem) => elem.id != listItemId);
+        console.log(listItem);
+        listItem.remove();
+
+
+        console.log(this.incomesItems);
+        this.increaseIncome();
+        this.countSumm();
     }
 
     // editListItem() {
