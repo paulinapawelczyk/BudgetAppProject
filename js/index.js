@@ -1,6 +1,6 @@
 class Budget {
     incomeAddDesc = null;
-    icnomeAddVal = null;
+    incomeAddVal = null;
     incomeAddBtn = null;
     expenseAddDesc = null;
     expenseAddVal = null;
@@ -25,6 +25,8 @@ class Budget {
     numberOfExpenses = 0;
     incomesItems = [];
     expensesItems = [];
+
+    editItem = null;
 
     //make anchors for elements//
     AppElements = {
@@ -99,13 +101,81 @@ class Budget {
 
     clickTarget(target) {
         if (target.dataset && target.dataset.editButton !== undefined) {
-            // console.log(this.editListItem(target));
-            // this.editListItem(target);
+            this.editListItem(target);
         } else if (target.dataset && target.dataset.deleteButton !== undefined) {
             this.deleteListItem(target);
         }
     }
 
+    editListItem(target) {
+        const listClass = target.parentElement.parentElement.parentElement.parentElement.parentElement.className;
+        const listItem = target.parentElement.parentElement.parentElement;
+        const listItemId = listItem.id;
+
+        this.editItem = listItem;
+        let selectedElem;
+
+        //put into form divs values
+
+        if (listClass == "incomes_list") {
+            selectedElem = this.incomesItems.find((elem) => elem.id == listItemId);
+
+            this.incomeAddDesc.value = selectedElem.inDesc;
+            this.incomeAddVal.value = selectedElem.inValue;
+
+        } else if (listClass == "expenses_list") {
+            selectedElem = this.expensesItems.find((elem) => elem.id == listItemId);
+
+            this.expenseAddDesc.value = selectedElem.exDesc;
+            this.expenseAddVal.value = selectedElem.exValue;
+        }
+
+
+    }
+
+    updateIncomeItem() {
+
+        const newTable = [...this.incomesItems];
+        newTable.findIndex((item) => {
+            if (item.id == this.editItem.id) {
+                item.inValue = this.incomeAddVal.value;
+                item.inDesc = this.incomeAddDesc.value;
+                this.increaseIncome();
+                this.countSumm();
+            }
+        })
+
+        this.incomesItems = newTable;
+        this.editItem.querySelector(this.AppElements.itemDesc).textContent = this.incomeAddDesc.value;
+        this.editItem.querySelector(this.AppElements.itemValue).textContent = `${Number(this.incomeAddVal.value).toFixed(2)} PLN`;
+
+        this.incomeAddDesc.value = '';
+        this.incomeAddVal.value = '';
+        this.editItem = null;
+
+    }
+
+    updateExpenseItem() {
+
+        const newTable = [...this.expensesItems];
+        newTable.findIndex((item) => {
+            if (item.id == this.editItem.id) {
+                item.exValue = this.expenseAddVal.value;
+                item.exDesc = this.expenseAddDesc.value;
+                this.increaseExpenses();
+                this.countSumm();
+            }
+        })
+
+        this.expensesItems = newTable;
+        this.editItem.querySelector(this.AppElements.itemDesc).textContent = this.expenseAddDesc.value;
+        this.editItem.querySelector(this.AppElements.itemValue).textContent = `${Number(this.expenseAddVal.value).toFixed(2)} PLN`;
+
+        this.expenseAddDesc.value = '';
+        this.expenseAddVal.value = '';
+        this.editItem = null;
+
+    }
 
     deleteListItem(target) {
         const listClass = target.parentElement.parentElement.parentElement.parentElement.parentElement.className;
@@ -125,16 +195,12 @@ class Budget {
             this.expensesItems = newTable.filter((elem) => elem.id != listItemId);
             listItem.remove();
             this.increaseExpenses();
-
         }
 
         this.countSumm();
     }
 
-    // editListItem() {
-    //     const listItem = target.parentElement.parentElement.parentElement;
-    //     const listItemId = listItem.id;
-    // }
+
 
     countSumm() {
         const sumOfBudget = this.incomesSumm - this.expensesSumm;
@@ -151,7 +217,6 @@ class Budget {
             this.budgetSummInfo.classList.add('sumNegative');
         }
     }
-
 
 
     getIncomeInput() {
@@ -246,6 +311,9 @@ class Budget {
         const newIncome = this.getIncomeInput();
         if (!newIncome) {
             this.showAlertIn();
+        } else if (this.editItem) {
+            this.updateIncomeItem();
+            return;
         } else {
             this.incomesList.insertAdjacentHTML('beforeend', this.createIncomeItem(newIncome.inDesc, newIncome.inValue, newIncome.id));
             this.incomesItems.push(newIncome);
@@ -263,7 +331,11 @@ class Budget {
         const newExpense = this.getExpenseInput();
         if (!newExpense) {
             this.showAlertEx();
-        } else {
+        } else if (this.editItem) {
+            this.updateExpenseItem();
+            return;
+        }
+        else {
             this.expensesList.insertAdjacentHTML('beforeend', this.createExpenseItem(newExpense.exDesc, newExpense.exValue, newExpense.id));
             this.expensesItems.push(newExpense);
             this.numberOfExpenses++;
