@@ -38,3 +38,6 @@ To make it I've created separete functions for both expenses and incomes tables.
 * **hideAlertEx()** - for Expenses
 
 If the sum of incomes is greater than the expenses, the application displays the message: "You can still spend XXX PLN more". If the difference is 0, the message is “The balance is zero!”. If there are more expenses than incomes, the message is following “The balance is negative. You are XXX PLN under the budget!".
+
+
+🌞 GitHub Page: https://paulinapawelczyk.github.io/BudgetAppProject/
